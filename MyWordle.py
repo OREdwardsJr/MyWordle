@@ -8,7 +8,7 @@ from tkinter import messagebox
 from tkinter import Text, Tk
 import tkinter.font as tkFont
 
-#Colors
+#Declare variables
 primary_color = '#9cc2ff'
 secondary_color = "#fff652"
 victory_color = "#52ff66"

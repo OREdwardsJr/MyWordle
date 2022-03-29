@@ -1,11 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# ## Import Modules
-
-# In[1]:
-
-
 import re
 import random
 import numpy as np
@@ -16,12 +8,6 @@ from tkinter import messagebox
 from tkinter import Text, Tk
 import tkinter.font as tkFont
 
-
-# ## Define Variables
-
-# In[2]:
-
-
 #Colors
 primary_color = '#9cc2ff'
 secondary_color = "#fff652"
@@ -31,39 +17,15 @@ i = 0
 score = 0
 
 
-# #### Create database for words
-
-# In[3]:
-
-
+#Create database for words
 file = open("/usr/share/dict/words", "r")
 words = re.sub("[^\w]", " ",  file.read()).split()
-
 word_db = [word.upper() for word in words if len(word) == 5]
-word_db = set(word_db)
+word_db = list(set(word_db))
 
-
-# ## Define Functions
-
-# In[4]:
-
-
-def OLD_generate_word(word_db: str) -> str:
-    selector = random.randint(0, len(word_db) - 1)
-    for i, choice in enumerate(word_db):
-        if i == selector:
-            return choice
-
-
-# In[ ]:
-
-
+#Define Functions
 def generate_word(word_db: str[list]) -> str:
     return word_db[random.randint(0, len(word_db) - 1)]
-
-
-# In[5]:
-
 
 def new_game():
     global hidden_word
@@ -83,10 +45,6 @@ def new_game():
     
     if __name__ == "__main__":
         print(hidden_word)
-
-
-# In[6]:
-
 
 def collect_answ():
     active = False
@@ -133,16 +91,6 @@ def collect_answ():
                     entry["state"] = DISABLED
                     entry["disabledbackground"] = primary_color
                     entry["disabledforeground"] = "#131313"
-                else:
-                    pass
-        else:
-            pass
-
-
-# # Build Board
-
-# In[7]:
-
 
 #Hidden Word Variable
 hidden_word = generate_word(word_db)
@@ -224,9 +172,6 @@ row_4 = [entry_15, entry_16, entry_17, entry_18, entry_19]
 row_5 = [entry_20, entry_21, entry_22, entry_23, entry_24]
 row_6 = [entry_25, entry_26, entry_27, entry_28, entry_29]
 
-#tkinter is created from programming language tcl and is wrapped by python, which is why no parentheses
-#Explanation => https://stackoverflow.com/questions/66720961/function-calls-with-without-parentheses
-
 #Create Buttons
 button_1 = tk.Button(master = window, text = "Submit", command = collect_answ)
 button_2 = tk.Button(window,text = "Submit", command = collect_answ)
@@ -279,12 +224,6 @@ grid_dict = {
     button_6: row_6,
 }
 
-
-window.mainloop()
-
-
-# In[ ]:
-
-
-
-
+#Run loop
+if __name__ == "__main__":
+    window.mainloop()

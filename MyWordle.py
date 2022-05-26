@@ -48,7 +48,7 @@ def new_game():
 
 def collect_answ():
     active = False
-    char_index = set() #Could be a list as well. Just introducing the concept
+    char_index = set()
     rounds = 0
     for button, entries in grid_dict.items():
         rounds += 1
